@@ -1,5 +1,6 @@
 package pro.ahoora.daggerbestpractice.di
 
+import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import pro.ahoora.daggerbestpractice.di.scopes.ActivityScope
@@ -21,5 +22,6 @@ abstract class ActivityBuilder {
     @ActivityScope
     @ContributesAndroidInjector(modules = [DetailActivityModule::class, DetailFragmentBuilder::class])
     abstract fun bindDetailActivity(): DetailActivity
+
 
 }
