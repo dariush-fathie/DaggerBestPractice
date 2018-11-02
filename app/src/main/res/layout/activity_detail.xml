@@ -7,16 +7,46 @@
     tools:context=".ui.detail.DetailActivity">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/ctl"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="250dp"
+            app:expandedTitleGravity="bottom"
+            app:expandedTitleMarginBottom="28dp"
+            app:expandedTitleMarginStart="72dp"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:titleEnabled="true">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="?attr/colorPrimary"
+                app:contentInsetStart="72dp"
+                app:layout_collapseMode="pin"
+                app:logo="@drawable/jin_logo"
+                app:navigationIcon="@drawable/ic_menu"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:subtitle="sdfsfds"
+                app:title="sdfkljsdfl"
+                app:titleMarginStart="8dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                app:tint="@color/colorPrimaryDark"
+                android:id="@+id/iv_logo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="bottom"
+                android:layout_margin="16dp"
+                android:src="@drawable/jin_logo"
+                tools:ignore="ContentDescription" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 

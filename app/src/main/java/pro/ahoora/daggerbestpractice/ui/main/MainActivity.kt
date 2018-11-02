@@ -5,14 +5,15 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
-import dagger.android.support.DaggerAppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import pro.ahoora.daggerbestpractice.R
+import pro.ahoora.daggerbestpractice.base.BaseActivity
 import pro.ahoora.daggerbestpractice.repository.local.LocalRESTApi
 import pro.ahoora.daggerbestpractice.ui.detail.DetailActivity
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity() {
+class MainActivity : BaseActivity() {
 
 
     @Inject
@@ -24,28 +25,25 @@ class MainActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var pm: PackageManager
 
+    @Inject
+    lateinit var factory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var mainViewModel: MainViewModel
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        Timber.e("ma color 1 %s", color)
-        Timber.e("ma restApi 2 %s", localRESTApi)
-        Timber.e("ma packageManager %s", pm == packageManager)
-
+        observe(mainViewModel.username) {
+            Timber.e("username %s", it)
+        }
 
         Handler().postDelayed({
             startActivity(Intent(this, DetailActivity::class.java))
-            finish()
         }, 500)
 
     }
 
-    override fun onResume() {
-        super.onResume()
-
-        Timber.e("ma color 1 %s", color)
-        Timber.e("ma restAPi %s", localRESTApi)
-
-    }
 }

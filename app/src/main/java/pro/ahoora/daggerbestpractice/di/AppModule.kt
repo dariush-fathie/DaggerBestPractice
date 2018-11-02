@@ -8,7 +8,7 @@ import dagger.Provides
 import pro.ahoora.daggerbestpractice.di.scopes.ApplicationScope
 
 
-@Module(includes = [RESTModule::class])
+@Module(includes = [RESTModule::class, ViewModelModule::class])
 class AppModule {
 
     /**

@@ -10,7 +10,6 @@ import javax.inject.Inject
 
 class BestPracticeApp : DaggerApplication() {
 
-
     override fun applicationInjector(): AndroidInjector<out BestPracticeApp> {
         return DaggerAppComponent.builder().application(this).build()
     }
