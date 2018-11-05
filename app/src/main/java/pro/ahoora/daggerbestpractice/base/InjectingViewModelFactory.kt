@@ -2,11 +2,11 @@ package pro.ahoora.daggerbestpractice.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import pro.ahoora.daggerbestpractice.di.scopes.ApplicationScope
+import pro.ahoora.daggerbestpractice.di.scopes.PerApplication
 import javax.inject.Inject
 import javax.inject.Provider
 
-@ApplicationScope
+@PerApplication
 class InjectingViewModelFactory @Inject constructor(
         private val viewModelProviders: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
 ) : ViewModelProvider.Factory {

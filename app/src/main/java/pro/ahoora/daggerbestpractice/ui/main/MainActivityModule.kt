@@ -5,33 +5,25 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import dagger.Module
 import dagger.Provides
-import pro.ahoora.daggerbestpractice.di.scopes.ActivityScope
-import javax.inject.Named
+import pro.ahoora.daggerbestpractice.di.qualifiers.MainActivityContext
+import pro.ahoora.daggerbestpractice.di.scopes.PerActivity
 
 
-@Module
+@Module(includes = [MainActivityContextModule::class])
 class MainActivityModule {
 
+    // put all main activity dependencies here
 
-
-    @ActivityScope
-    @Named("activity_context")
-    @Provides
-    fun mainActivityContext(mainActivity: MainActivity): Context {
-        return mainActivity
-    }
-
-    @ActivityScope
+    @PerActivity
     @Provides
     fun provideColor(): Color {
         return Color()
     }
 
-    @ActivityScope
+    @PerActivity
     @Provides
-    fun providePackageManager(@Named("activity_context") context: Context): PackageManager {
+    fun providePackageManager(/*@Named("activity_context")*/@MainActivityContext context: Context): PackageManager {
         return context.packageManager
     }
-
 
 }

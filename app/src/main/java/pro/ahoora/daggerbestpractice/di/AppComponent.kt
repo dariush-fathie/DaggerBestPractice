@@ -6,11 +6,11 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import pro.ahoora.daggerbestpractice.BestPracticeApp
-import pro.ahoora.daggerbestpractice.di.scopes.ApplicationScope
+import pro.ahoora.daggerbestpractice.di.scopes.PerApplication
 
 
 @Component(modules = [AndroidSupportInjectionModule::class, ActivityBuilder::class, AppModule::class])
-@ApplicationScope
+@PerApplication
 interface AppComponent : AndroidInjector<BestPracticeApp> {
 
     @Component.Builder

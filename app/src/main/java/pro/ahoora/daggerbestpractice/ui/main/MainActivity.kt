@@ -36,6 +36,9 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        Timber.e("is equal pm %s", "$pm ${pm == packageManager}")
+
         observe(mainViewModel.username) {
             Timber.e("username %s", it)
         }

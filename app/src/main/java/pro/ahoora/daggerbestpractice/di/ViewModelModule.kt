@@ -7,7 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import pro.ahoora.daggerbestpractice.base.InjectingViewModelFactory
 import pro.ahoora.daggerbestpractice.di.keys.ViewModelKey
-import pro.ahoora.daggerbestpractice.di.scopes.ApplicationScope
+import pro.ahoora.daggerbestpractice.di.scopes.PerApplication
 import pro.ahoora.daggerbestpractice.ui.detail.DetailViewModel
 import pro.ahoora.daggerbestpractice.ui.main.MainViewModel
 
@@ -15,8 +15,12 @@ import pro.ahoora.daggerbestpractice.ui.main.MainViewModel
 @Module
 abstract class ViewModelModule {
 
+    /**
+     * add all viewModels here
+     */
+
     @Binds
-    @ApplicationScope
+    @PerApplication
     abstract fun bindViewModelFactory(factory: InjectingViewModelFactory): ViewModelProvider.Factory
 
     @Binds

@@ -5,7 +5,7 @@ import android.content.Context
 import android.graphics.drawable.ShapeDrawable
 import dagger.Module
 import dagger.Provides
-import pro.ahoora.daggerbestpractice.di.scopes.ApplicationScope
+import pro.ahoora.daggerbestpractice.di.scopes.PerApplication
 
 
 @Module(includes = [RESTModule::class, ViewModelModule::class])
@@ -16,13 +16,13 @@ class AppModule {
      */
 
     @Provides
-    @ApplicationScope
+    @PerApplication
     fun provideApplicationContext(application: Application): Context {
         return application
     }
 
     @Provides
-    @ApplicationScope
+    @PerApplication
     fun provideSomething(): ShapeDrawable {
         return ShapeDrawable()
     }
