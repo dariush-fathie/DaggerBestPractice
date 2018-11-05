@@ -5,7 +5,7 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import dagger.Module
 import dagger.Provides
-import pro.ahoora.daggerbestpractice.di.qualifiers.MainActivityContext
+import pro.ahoora.daggerbestpractice.di.qualifiers.ActivityContext
 import pro.ahoora.daggerbestpractice.di.scopes.PerActivity
 
 
@@ -22,7 +22,7 @@ class MainActivityModule {
 
     @PerActivity
     @Provides
-    fun providePackageManager(/*@Named("activity_context")*/@MainActivityContext context: Context): PackageManager {
+    fun providePackageManager(/*@Named("activity_context")*/@ActivityContext context: Context): PackageManager {
         return context.packageManager
     }
 

@@ -3,7 +3,7 @@ package pro.ahoora.daggerbestpractice.ui.main
 import android.content.Context
 import dagger.Binds
 import dagger.Module
-import pro.ahoora.daggerbestpractice.di.qualifiers.MainActivityContext
+import pro.ahoora.daggerbestpractice.di.qualifiers.ActivityContext
 import pro.ahoora.daggerbestpractice.di.scopes.PerActivity
 
 
@@ -11,7 +11,7 @@ import pro.ahoora.daggerbestpractice.di.scopes.PerActivity
 abstract class MainActivityContextModule {
 
     @PerActivity
-    @MainActivityContext
+    @ActivityContext
     //@Named("activity_context") replaced with ^
     @Binds
     abstract fun mainActivityContext(mainActivity: MainActivity): Context

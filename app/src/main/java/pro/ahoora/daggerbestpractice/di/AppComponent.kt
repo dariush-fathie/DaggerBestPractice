@@ -13,6 +13,7 @@ import pro.ahoora.daggerbestpractice.di.scopes.PerApplication
 @PerApplication
 interface AppComponent : AndroidInjector<BestPracticeApp> {
 
+
     @Component.Builder
     abstract class Builder : AndroidInjector.Builder<BestPracticeApp>() {
 
