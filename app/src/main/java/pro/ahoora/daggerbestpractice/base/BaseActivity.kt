@@ -3,8 +3,11 @@ package pro.ahoora.daggerbestpractice.base
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.*
 import dagger.android.support.DaggerAppCompatActivity
+import io.realm.Realm
+import pro.ahoora.daggerbestpractice.data.RealmInstanceManager
 
 abstract class BaseActivity : DaggerAppCompatActivity() {
+
 
     inline fun <reified T : ViewModel> AppCompatActivity.getViewModel(factory: ViewModelProvider.Factory): T {
         return ViewModelProviders.of(this, factory).get(T::class.java)
@@ -20,4 +23,5 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         liveData.observe(this, Observer(body))
     }
 
+    fun getRealmInstance(): Realm = Realm.getDefaultInstance()
 }

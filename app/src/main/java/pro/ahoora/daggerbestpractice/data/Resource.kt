@@ -1,33 +1,19 @@
 package pro.ahoora.daggerbestpractice.data
 
-import org.jetbrains.annotations.NotNull
-import org.jetbrains.annotations.Nullable
 
-class Resource<T>(
-        @NotNull message: String = "",
-        @Nullable data: T? = null,
-        @Nullable status: Status? = null
-) {
-
-
-    companion object INSTANCE {
-
-        fun <T> success(@Nullable message: String, @Nullable data: T): Resource<T> {
-            return Resource(message, data, Status.SUCCESS)
+data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
+    companion object {
+        fun <T> success(data: T?): Resource<T> {
+            return Resource(Status.SUCCESS, data, null)
         }
 
-        fun <T> error(@Nullable message: String, @Nullable data: T): Resource<T> {
-            return Resource(message, data, Status.ERROR)
+        fun <T> error(msg: String, data: T?): Resource<T> {
+            return Resource(Status.ERROR, data, msg)
         }
 
-        fun <T> loading(@Nullable message: String, @Nullable data: T): Resource<T> {
-            return Resource(message, data, Status.LOADING)
+        fun <T> loading(data: T?): Resource<T> {
+            return Resource(Status.LOADING, data, null)
         }
-
-        fun <T> pending(@Nullable message: String, @Nullable data: T): Resource<T> {
-            return Resource(message, data, Status.PENDING)
-        }
-
     }
 
     enum class Status {

@@ -1,4 +1,6 @@
-package pro.ahoora.complexdagger.repository
+package pro.ahoora.daggerbestpractice.repository
+
+import pro.ahoora.complexdagger.repository.IUser
 
 class UserRepository : IUser {
     override fun getUser() {
@@ -8,7 +10,6 @@ class UserRepository : IUser {
     override fun setUser() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
-
 
 
 }

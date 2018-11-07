@@ -6,8 +6,10 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import androidx.lifecycle.ViewModelProvider
+import dagger.Lazy
 import pro.ahoora.daggerbestpractice.R
 import pro.ahoora.daggerbestpractice.base.BaseActivity
+import pro.ahoora.daggerbestpractice.data.RealmInstanceManager
 import pro.ahoora.daggerbestpractice.repository.local.LocalRESTApi
 import pro.ahoora.daggerbestpractice.ui.detail.DetailActivity
 import timber.log.Timber
@@ -31,11 +33,23 @@ class MainActivity : BaseActivity() {
     @Inject
     lateinit var mainViewModel: MainViewModel
 
+    @Inject
+    lateinit var realmInstanceManager: Lazy<RealmInstanceManager>
+
+
+    override fun onStart() {
+        super.onStart()
+        realmInstanceManager.get().openRealm(this, getRealmInstance())
+    }
+
+    override fun onStop() {
+        realmInstanceManager.get().closeRealm(this)
+        super.onStop()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         Timber.e("is equal pm %s", "$pm ${pm == packageManager}")
 

@@ -6,7 +6,11 @@ import dagger.Provides
 import pro.ahoora.daggerbestpractice.di.scopes.PerApplication
 
 
-@Module(includes = [ApplicationContext::class, RESTModule::class, ViewModelModule::class])
+@Module(includes = [ApplicationContext::class,
+    RESTModule::class,
+    ViewModelModule::class,
+    SharedPrefsModule::class,
+    RealmInstanceManagerModule::class])
 class AppModule {
 
     /**
